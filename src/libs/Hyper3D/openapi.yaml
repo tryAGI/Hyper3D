@@ -1,0 +1,269 @@
+openapi: 3.0.3
+info:
+  title: Hyper3D Rodin API
+  description: |
+    API for Hyper3D Rodin 3D generation, status polling, result downloads,
+    balance checks, and texture-only generation.
+
+    This OpenAPI document is manually maintained from the public Hyper3D
+    developer documentation because the provider publishes endpoint docs but
+    not a stable top-level OpenAPI document.
+  version: "1.0.0"
+servers:
+  - url: https://api.hyper3d.com
+security:
+  - BearerAuth: []
+tags:
+  - name: generation
+  - name: tasks
+  - name: account
+paths:
+  /api/v2/rodin:
+    post:
+      operationId: createRodinTask
+      summary: Submit a Rodin generation task
+      description: |
+        Submit an asynchronous Rodin task. Use tier=Gen-2 for Gen-2 generation.
+        For image-to-3D, include an images file. For text-to-3D, include prompt
+        and omit image files.
+      tags: [generation]
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/RodinGenerationRequest"
+      responses:
+        "200":
+          description: Task submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TaskSubmissionResponse"
+  /api/v2/rodin_texture_only:
+    post:
+      operationId: createTextureTask
+      summary: Submit a texture-only task
+      tags: [generation]
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/TextureOnlyRequest"
+      responses:
+        "200":
+          description: Task submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TaskSubmissionResponse"
+  /api/v2/status:
+    post:
+      operationId: getTaskStatus
+      summary: Check task status
+      tags: [tasks]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StatusRequest"
+      responses:
+        "200":
+          description: Task status
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatusResponse"
+  /api/v2/download:
+    post:
+      operationId: downloadTaskResults
+      summary: Get result download URLs
+      tags: [tasks]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DownloadRequest"
+      responses:
+        "200":
+          description: Result files
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DownloadResponse"
+  /api/v2/check_balance:
+    get:
+      operationId: checkBalance
+      summary: Check account balance
+      tags: [account]
+      responses:
+        "200":
+          description: Account balance
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BalanceResponse"
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    CommonError:
+      type: object
+      properties:
+        error:
+          type: string
+          nullable: true
+        message:
+          type: string
+          nullable: true
+    RodinGenerationRequest:
+      type: object
+      properties:
+        tier:
+          type: string
+          description: Generation tier, such as Gen-2, Regular, Detail, Smooth, or Sketch.
+        images:
+          type: string
+          format: binary
+          description: Image input. Repeat this multipart field for multi-view input.
+        prompt:
+          type: string
+        use_original_alpha:
+          type: boolean
+        condition_mode:
+          type: string
+          enum: [fuse, concat]
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 65535
+        geometry_file_format:
+          $ref: "#/components/schemas/GeometryFileFormat"
+        material:
+          type: string
+          enum: [PBR, Shaded, All, None]
+        quality:
+          type: string
+          enum: [high, medium, low, extra-low]
+        quality_override:
+          type: integer
+        TAPose:
+          type: boolean
+        bbox_condition:
+          type: array
+          items:
+            type: integer
+          minItems: 3
+          maxItems: 3
+        mesh_mode:
+          type: string
+          enum: [Raw, Quad]
+        mesh_simplify:
+          type: boolean
+        mesh_smooth:
+          type: boolean
+        addons:
+          type: array
+          items:
+            type: string
+        preview_render:
+          type: boolean
+        hd_texture:
+          type: boolean
+    TextureOnlyRequest:
+      type: object
+      properties:
+        image:
+          type: string
+          format: binary
+        model:
+          type: string
+          format: binary
+        prompt:
+          type: string
+        seed:
+          type: integer
+          minimum: 0
+          maximum: 65535
+        reference_scale:
+          type: number
+          format: double
+        geometry_file_format:
+          $ref: "#/components/schemas/GeometryFileFormat"
+        material:
+          type: string
+          enum: [PBR, Shaded]
+        resolution:
+          type: string
+          enum: [Basic, High]
+    GeometryFileFormat:
+      type: string
+      enum: [glb, usdz, fbx, obj, stl]
+    TaskSubmissionResponse:
+      allOf:
+        - $ref: "#/components/schemas/CommonError"
+        - type: object
+          properties:
+            uuid:
+              type: string
+            jobs:
+              type: object
+              properties:
+                uuids:
+                  type: array
+                  items:
+                    type: string
+                subscription_key:
+                  type: string
+    StatusRequest:
+      type: object
+      required: [subscription_key]
+      properties:
+        subscription_key:
+          type: string
+    StatusResponse:
+      allOf:
+        - $ref: "#/components/schemas/CommonError"
+        - type: object
+          properties:
+            jobs:
+              type: array
+              items:
+                type: object
+                properties:
+                  uuid:
+                    type: string
+                  status:
+                    type: string
+                    enum: [Waiting, Generating, Done, Failed]
+    DownloadRequest:
+      type: object
+      required: [task_uuid]
+      properties:
+        task_uuid:
+          type: string
+    DownloadResponse:
+      allOf:
+        - $ref: "#/components/schemas/CommonError"
+        - type: object
+          properties:
+            list:
+              type: array
+              items:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    format: uri
+                  name:
+                    type: string
+    BalanceResponse:
+      type: object
+      properties:
+        balance:
+          type: integer
