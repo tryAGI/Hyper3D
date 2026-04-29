@@ -121,6 +121,34 @@ namespace Hyper3D
                             {
 
                                 var __contentImage = new global::System.Net.Http.ByteArrayContent(request.Image ?? global::System.Array.Empty<byte>());
+                                __contentImage.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
+                                    request.Imagename is null
+                                        ? "application/octet-stream"
+                                        : (global::System.IO.Path.GetExtension(request.Imagename) ?? string.Empty).ToLowerInvariant() switch
+                                        {
+                                            ".aac" => "audio/aac",
+                                            ".flac" => "audio/flac",
+                                            ".gif" => "image/gif",
+                                            ".jpeg" => "image/jpeg",
+                                            ".jpg" => "image/jpeg",
+                                            ".json" => "application/json",
+                                            ".m4a" => "audio/mp4",
+                                            ".mp3" => "audio/mpeg",
+                                            ".mp4" => "video/mp4",
+                                            ".mpeg" => "audio/mpeg",
+                                            ".mpga" => "audio/mpeg",
+                                            ".oga" => "audio/ogg",
+                                            ".ogg" => "audio/ogg",
+                                            ".opus" => "audio/ogg",
+                                            ".pdf" => "application/pdf",
+                                            ".png" => "image/png",
+                                            ".txt" => "text/plain",
+                                            ".wav" => "audio/wav",
+                                            ".weba" => "audio/webm",
+                                            ".webm" => "video/webm",
+                                            ".webp" => "image/webp",
+                                            _ => "application/octet-stream",
+                                        });
                                 __httpRequestContent.Add(
                                     content: __contentImage,
                                     name: "\"image\"",
@@ -134,6 +162,34 @@ namespace Hyper3D
                             {
 
                                 var __contentModel = new global::System.Net.Http.ByteArrayContent(request.Model ?? global::System.Array.Empty<byte>());
+                                __contentModel.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
+                                    request.Modelname is null
+                                        ? "application/octet-stream"
+                                        : (global::System.IO.Path.GetExtension(request.Modelname) ?? string.Empty).ToLowerInvariant() switch
+                                        {
+                                            ".aac" => "audio/aac",
+                                            ".flac" => "audio/flac",
+                                            ".gif" => "image/gif",
+                                            ".jpeg" => "image/jpeg",
+                                            ".jpg" => "image/jpeg",
+                                            ".json" => "application/json",
+                                            ".m4a" => "audio/mp4",
+                                            ".mp3" => "audio/mpeg",
+                                            ".mp4" => "video/mp4",
+                                            ".mpeg" => "audio/mpeg",
+                                            ".mpga" => "audio/mpeg",
+                                            ".oga" => "audio/ogg",
+                                            ".ogg" => "audio/ogg",
+                                            ".opus" => "audio/ogg",
+                                            ".pdf" => "application/pdf",
+                                            ".png" => "image/png",
+                                            ".txt" => "text/plain",
+                                            ".wav" => "audio/wav",
+                                            ".weba" => "audio/webm",
+                                            ".webm" => "video/webm",
+                                            ".webp" => "image/webp",
+                                            _ => "application/octet-stream",
+                                        });
                                 __httpRequestContent.Add(
                                     content: __contentModel,
                                     name: "\"model\"",
@@ -147,42 +203,42 @@ namespace Hyper3D
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.Prompt}"),
+                                    content: new global::System.Net.Http.StringContent(request.Prompt ?? string.Empty),
                                     name: "\"prompt\"");
                             } 
                             if (request.Seed != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.Seed}"),
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.Seed, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
                                     name: "\"seed\"");
                             } 
                             if (request.ReferenceScale != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.ReferenceScale}"),
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.ReferenceScale, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
                                     name: "\"reference_scale\"");
                             } 
                             if (request.GeometryFileFormat != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.GeometryFileFormat?.ToValueString()}"),
+                                    content: new global::System.Net.Http.StringContent((request.GeometryFileFormat).HasValue ? (request.GeometryFileFormat).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"geometry_file_format\"");
                             } 
                             if (request.Material != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.Material?.ToValueString()}"),
+                                    content: new global::System.Net.Http.StringContent((request.Material).HasValue ? (request.Material).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"material\"");
                             } 
                             if (request.Resolution != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.Resolution?.ToValueString()}"),
+                                    content: new global::System.Net.Http.StringContent((request.Resolution).HasValue ? (request.Resolution).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"resolution\"");
                             }
                             __httpRequest.Content = __httpRequestContent;
