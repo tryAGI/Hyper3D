@@ -124,13 +124,41 @@ namespace Hyper3D
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.Tier}"),
+                                    content: new global::System.Net.Http.StringContent(request.Tier ?? string.Empty),
                                     name: "\"tier\"");
                             } 
                             if (request.Images != default)
                             {
 
                                 var __contentImages = new global::System.Net.Http.ByteArrayContent(request.Images ?? global::System.Array.Empty<byte>());
+                                __contentImages.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
+                                    request.Imagesname is null
+                                        ? "application/octet-stream"
+                                        : (global::System.IO.Path.GetExtension(request.Imagesname) ?? string.Empty).ToLowerInvariant() switch
+                                        {
+                                            ".aac" => "audio/aac",
+                                            ".flac" => "audio/flac",
+                                            ".gif" => "image/gif",
+                                            ".jpeg" => "image/jpeg",
+                                            ".jpg" => "image/jpeg",
+                                            ".json" => "application/json",
+                                            ".m4a" => "audio/mp4",
+                                            ".mp3" => "audio/mpeg",
+                                            ".mp4" => "video/mp4",
+                                            ".mpeg" => "audio/mpeg",
+                                            ".mpga" => "audio/mpeg",
+                                            ".oga" => "audio/ogg",
+                                            ".ogg" => "audio/ogg",
+                                            ".opus" => "audio/ogg",
+                                            ".pdf" => "application/pdf",
+                                            ".png" => "image/png",
+                                            ".txt" => "text/plain",
+                                            ".wav" => "audio/wav",
+                                            ".weba" => "audio/webm",
+                                            ".webm" => "video/webm",
+                                            ".webp" => "image/webp",
+                                            _ => "application/octet-stream",
+                                        });
                                 __httpRequestContent.Add(
                                     content: __contentImages,
                                     name: "\"images\"",
@@ -144,91 +172,91 @@ namespace Hyper3D
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.Prompt}"),
+                                    content: new global::System.Net.Http.StringContent(request.Prompt ?? string.Empty),
                                     name: "\"prompt\"");
                             } 
                             if (request.UseOriginalAlpha != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.UseOriginalAlpha}"),
+                                    content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(request.UseOriginalAlpha, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
                                     name: "\"use_original_alpha\"");
                             } 
                             if (request.ConditionMode != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.ConditionMode?.ToValueString()}"),
+                                    content: new global::System.Net.Http.StringContent((request.ConditionMode).HasValue ? (request.ConditionMode).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"condition_mode\"");
                             } 
                             if (request.Seed != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.Seed}"),
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.Seed, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
                                     name: "\"seed\"");
                             } 
                             if (request.GeometryFileFormat != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.GeometryFileFormat?.ToValueString()}"),
+                                    content: new global::System.Net.Http.StringContent((request.GeometryFileFormat).HasValue ? (request.GeometryFileFormat).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"geometry_file_format\"");
                             } 
                             if (request.Material != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.Material?.ToValueString()}"),
+                                    content: new global::System.Net.Http.StringContent((request.Material).HasValue ? (request.Material).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"material\"");
                             } 
                             if (request.Quality != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.Quality?.ToValueString()}"),
+                                    content: new global::System.Net.Http.StringContent((request.Quality).HasValue ? (request.Quality).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"quality\"");
                             } 
                             if (request.QualityOverride != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.QualityOverride}"),
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.QualityOverride, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
                                     name: "\"quality_override\"");
                             } 
                             if (request.TAPose != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.TAPose}"),
+                                    content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(request.TAPose, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
                                     name: "\"TAPose\"");
                             } 
                             if (request.BboxCondition != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.BboxCondition, x => x))}]"),
+                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.BboxCondition, x => global::System.Convert.ToString(x, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty))}]"),
                                     name: "\"bbox_condition\"");
                             } 
                             if (request.MeshMode != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.MeshMode?.ToValueString()}"),
+                                    content: new global::System.Net.Http.StringContent((request.MeshMode).HasValue ? (request.MeshMode).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"mesh_mode\"");
                             } 
                             if (request.MeshSimplify != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.MeshSimplify}"),
+                                    content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(request.MeshSimplify, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
                                     name: "\"mesh_simplify\"");
                             } 
                             if (request.MeshSmooth != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.MeshSmooth}"),
+                                    content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(request.MeshSmooth, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
                                     name: "\"mesh_smooth\"");
                             } 
                             if (request.Addons != default)
@@ -242,14 +270,14 @@ namespace Hyper3D
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.PreviewRender}"),
+                                    content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(request.PreviewRender, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
                                     name: "\"preview_render\"");
                             } 
                             if (request.HdTexture != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.HdTexture}"),
+                                    content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(request.HdTexture, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
                                     name: "\"hd_texture\"");
                             }
                             __httpRequest.Content = __httpRequestContent;
