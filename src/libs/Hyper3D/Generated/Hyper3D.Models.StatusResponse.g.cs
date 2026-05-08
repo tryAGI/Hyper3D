@@ -29,6 +29,19 @@ namespace Hyper3D
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickCommonError(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Hyper3D.CommonError? value)
+        {
+            value = CommonError;
+            return IsCommonError;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hyper3D.StatusResponseVariant2? StatusResponseVariant2 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace Hyper3D
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(StatusResponseVariant2))]
 #endif
         public bool IsStatusResponseVariant2 => StatusResponseVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickStatusResponseVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Hyper3D.StatusResponseVariant2? value)
+        {
+            value = StatusResponseVariant2;
+            return IsStatusResponseVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +144,8 @@ namespace Hyper3D
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Hyper3D.CommonError?, TResult>? commonError = null,
-            global::System.Func<global::Hyper3D.StatusResponseVariant2?, TResult>? statusResponseVariant2 = null,
+            global::System.Func<global::Hyper3D.CommonError, TResult>? commonError = null,
+            global::System.Func<global::Hyper3D.StatusResponseVariant2, TResult>? statusResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +169,32 @@ namespace Hyper3D
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Hyper3D.CommonError?>? commonError = null,
-            global::System.Action<global::Hyper3D.StatusResponseVariant2?>? statusResponseVariant2 = null,
+            global::System.Action<global::Hyper3D.CommonError>? commonError = null,
+
+            global::System.Action<global::Hyper3D.StatusResponseVariant2>? statusResponseVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsCommonError)
+            {
+                commonError?.Invoke(CommonError!);
+            }
+            else if (IsStatusResponseVariant2)
+            {
+                statusResponseVariant2?.Invoke(StatusResponseVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Hyper3D.CommonError>? commonError = null,
+            global::System.Action<global::Hyper3D.StatusResponseVariant2>? statusResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
