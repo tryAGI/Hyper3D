@@ -29,6 +29,19 @@ namespace Hyper3D
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickCommonError(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Hyper3D.CommonError? value)
+        {
+            value = CommonError;
+            return IsCommonError;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hyper3D.DownloadResponseVariant2? DownloadResponseVariant2 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace Hyper3D
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(DownloadResponseVariant2))]
 #endif
         public bool IsDownloadResponseVariant2 => DownloadResponseVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickDownloadResponseVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Hyper3D.DownloadResponseVariant2? value)
+        {
+            value = DownloadResponseVariant2;
+            return IsDownloadResponseVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +144,8 @@ namespace Hyper3D
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Hyper3D.CommonError?, TResult>? commonError = null,
-            global::System.Func<global::Hyper3D.DownloadResponseVariant2?, TResult>? downloadResponseVariant2 = null,
+            global::System.Func<global::Hyper3D.CommonError, TResult>? commonError = null,
+            global::System.Func<global::Hyper3D.DownloadResponseVariant2, TResult>? downloadResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +169,32 @@ namespace Hyper3D
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Hyper3D.CommonError?>? commonError = null,
-            global::System.Action<global::Hyper3D.DownloadResponseVariant2?>? downloadResponseVariant2 = null,
+            global::System.Action<global::Hyper3D.CommonError>? commonError = null,
+
+            global::System.Action<global::Hyper3D.DownloadResponseVariant2>? downloadResponseVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsCommonError)
+            {
+                commonError?.Invoke(CommonError!);
+            }
+            else if (IsDownloadResponseVariant2)
+            {
+                downloadResponseVariant2?.Invoke(DownloadResponseVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Hyper3D.CommonError>? commonError = null,
+            global::System.Action<global::Hyper3D.DownloadResponseVariant2>? downloadResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
