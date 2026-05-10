@@ -42,6 +42,13 @@ namespace Hyper3D
         /// <summary>
         /// 
         /// </summary>
+        public global::Hyper3D.CommonError PickCommonError() => IsCommonError
+            ? CommonError!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CommonError' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hyper3D.StatusResponseVariant2? StatusResponseVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Hyper3D
             value = StatusResponseVariant2;
             return IsStatusResponseVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hyper3D.StatusResponseVariant2 PickStatusResponseVariant2() => IsStatusResponseVariant2
+            ? StatusResponseVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'StatusResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Hyper3D
         /// <summary>
         /// 
         /// </summary>
+        public static StatusResponse FromCommonError(global::Hyper3D.CommonError? value) => new StatusResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator StatusResponse(global::Hyper3D.StatusResponseVariant2 value) => new StatusResponse((global::Hyper3D.StatusResponseVariant2?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Hyper3D
         {
             StatusResponseVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static StatusResponse FromStatusResponseVariant2(global::Hyper3D.StatusResponseVariant2? value) => new StatusResponse(value);
 
         /// <summary>
         /// 

@@ -42,6 +42,13 @@ namespace Hyper3D
         /// <summary>
         /// 
         /// </summary>
+        public global::Hyper3D.CommonError PickCommonError() => IsCommonError
+            ? CommonError!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CommonError' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hyper3D.DownloadResponseVariant2? DownloadResponseVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Hyper3D
             value = DownloadResponseVariant2;
             return IsDownloadResponseVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hyper3D.DownloadResponseVariant2 PickDownloadResponseVariant2() => IsDownloadResponseVariant2
+            ? DownloadResponseVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'DownloadResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Hyper3D
         /// <summary>
         /// 
         /// </summary>
+        public static DownloadResponse FromCommonError(global::Hyper3D.CommonError? value) => new DownloadResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator DownloadResponse(global::Hyper3D.DownloadResponseVariant2 value) => new DownloadResponse((global::Hyper3D.DownloadResponseVariant2?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Hyper3D
         {
             DownloadResponseVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static DownloadResponse FromDownloadResponseVariant2(global::Hyper3D.DownloadResponseVariant2? value) => new DownloadResponse(value);
 
         /// <summary>
         /// 
