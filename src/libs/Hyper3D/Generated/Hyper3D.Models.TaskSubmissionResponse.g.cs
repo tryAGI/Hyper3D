@@ -42,6 +42,13 @@ namespace Hyper3D
         /// <summary>
         /// 
         /// </summary>
+        public global::Hyper3D.CommonError PickCommonError() => IsCommonError
+            ? CommonError!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CommonError' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hyper3D.TaskSubmissionResponseVariant2? TaskSubmissionResponseVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Hyper3D
             value = TaskSubmissionResponseVariant2;
             return IsTaskSubmissionResponseVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hyper3D.TaskSubmissionResponseVariant2 PickTaskSubmissionResponseVariant2() => IsTaskSubmissionResponseVariant2
+            ? TaskSubmissionResponseVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'TaskSubmissionResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Hyper3D
         /// <summary>
         /// 
         /// </summary>
+        public static TaskSubmissionResponse FromCommonError(global::Hyper3D.CommonError? value) => new TaskSubmissionResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TaskSubmissionResponse(global::Hyper3D.TaskSubmissionResponseVariant2 value) => new TaskSubmissionResponse((global::Hyper3D.TaskSubmissionResponseVariant2?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Hyper3D
         {
             TaskSubmissionResponseVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TaskSubmissionResponse FromTaskSubmissionResponseVariant2(global::Hyper3D.TaskSubmissionResponseVariant2? value) => new TaskSubmissionResponse(value);
 
         /// <summary>
         /// 
