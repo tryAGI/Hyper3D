@@ -48,5 +48,6 @@ namespace Hyper3D
         public DownloadResponseVariant2ListItem()
         {
         }
+
     }
 }

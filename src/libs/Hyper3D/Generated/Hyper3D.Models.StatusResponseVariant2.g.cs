@@ -39,5 +39,6 @@ namespace Hyper3D
         public StatusResponseVariant2()
         {
         }
+
     }
 }
