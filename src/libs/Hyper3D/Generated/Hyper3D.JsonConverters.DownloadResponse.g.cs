@@ -77,6 +77,7 @@ namespace Hyper3D.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hyper3D.CommonError), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hyper3D.CommonError> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hyper3D.CommonError).Name}");
                     commonError = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -87,9 +88,13 @@ namespace Hyper3D.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (commonError == null && downloadResponseVariant2 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hyper3D.DownloadResponseVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hyper3D.DownloadResponseVariant2> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hyper3D.DownloadResponseVariant2).Name}");
                     downloadResponseVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

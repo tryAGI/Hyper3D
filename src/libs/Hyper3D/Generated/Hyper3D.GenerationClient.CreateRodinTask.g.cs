@@ -57,6 +57,31 @@ namespace Hyper3D
             global::Hyper3D.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await CreateRodinTaskAsResponseAsync(
+
+                request: request,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Submit a Rodin generation task<br/>
+        /// Submit an asynchronous Rodin task. Use tier=Gen-2 for Gen-2 generation.<br/>
+        /// For image-to-3D, include an images file. For text-to-3D, include prompt<br/>
+        /// and omit image files.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Hyper3D.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Hyper3D.AutoSDKHttpResponse<global::Hyper3D.TaskSubmissionResponse>> CreateRodinTaskAsResponseAsync(
+
+            global::Hyper3D.RodinGenerationRequest request,
+            global::Hyper3D.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
@@ -83,10 +108,11 @@ namespace Hyper3D
             var __maxAttempts = global::Hyper3D.AutoSDKRequestOptionsSupport.GetMaxAttempts(
                 clientOptions: Options,
                 requestOptions: requestOptions,
-                supportsRetry: true);
+                supportsRetry: false);
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::Hyper3D.PathBuilder(
                                 path: "/api/v2/rodin",
                                 baseUri: HttpClient.BaseAddress);
@@ -119,6 +145,7 @@ namespace Hyper3D
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
+
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
                             if (request.Tier != default)
                             {
@@ -126,7 +153,8 @@ namespace Hyper3D
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent(request.Tier ?? string.Empty),
                                     name: "\"tier\"");
-                            } 
+
+                            }
                             if (request.Images != default)
                             {
 
@@ -167,120 +195,139 @@ namespace Hyper3D
                                 {
                                     __contentImages.Headers.ContentDisposition.FileNameStar = null;
                                 }
-                            } 
+
+                            }
                             if (request.Prompt != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent(request.Prompt ?? string.Empty),
                                     name: "\"prompt\"");
-                            } 
+
+                            }
                             if (request.UseOriginalAlpha != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(request.UseOriginalAlpha, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
                                     name: "\"use_original_alpha\"");
-                            } 
+
+                            }
                             if (request.ConditionMode != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent((request.ConditionMode).HasValue ? (request.ConditionMode).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"condition_mode\"");
-                            } 
+
+                            }
                             if (request.Seed != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.Seed, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
                                     name: "\"seed\"");
-                            } 
+
+                            }
                             if (request.GeometryFileFormat != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent((request.GeometryFileFormat).HasValue ? (request.GeometryFileFormat).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"geometry_file_format\"");
-                            } 
+
+                            }
                             if (request.Material != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent((request.Material).HasValue ? (request.Material).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"material\"");
-                            } 
+
+                            }
                             if (request.Quality != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent((request.Quality).HasValue ? (request.Quality).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"quality\"");
-                            } 
+
+                            }
                             if (request.QualityOverride != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.QualityOverride, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
                                     name: "\"quality_override\"");
-                            } 
+
+                            }
                             if (request.TAPose != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(request.TAPose, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
                                     name: "\"TAPose\"");
-                            } 
+
+                            }
                             if (request.BboxCondition != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.BboxCondition, x => global::System.Convert.ToString(x, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty))}]"),
                                     name: "\"bbox_condition\"");
-                            } 
+
+                            }
                             if (request.MeshMode != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent((request.MeshMode).HasValue ? (request.MeshMode).GetValueOrDefault().ToValueString() : string.Empty),
                                     name: "\"mesh_mode\"");
-                            } 
+
+                            }
                             if (request.MeshSimplify != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(request.MeshSimplify, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
                                     name: "\"mesh_simplify\"");
-                            } 
+
+                            }
                             if (request.MeshSmooth != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(request.MeshSmooth, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
                                     name: "\"mesh_smooth\"");
-                            } 
+
+                            }
                             if (request.Addons != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.Addons, x => x))}]"),
                                     name: "\"addons\"");
-                            } 
+
+                            }
                             if (request.PreviewRender != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(request.PreviewRender, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
                                     name: "\"preview_render\"");
-                            } 
+
+                            }
                             if (request.HdTexture != default)
                             {
 
                                 __httpRequestContent.Add(
                                     content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(request.HdTexture, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
                                     name: "\"hd_texture\"");
+
                             }
+
                             __httpRequest.Content = __httpRequestContent;
+
                 global::Hyper3D.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -322,6 +369,8 @@ namespace Hyper3D
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -332,6 +381,11 @@ namespace Hyper3D
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::Hyper3D.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::Hyper3D.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -349,6 +403,8 @@ namespace Hyper3D
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -358,8 +414,7 @@ namespace Hyper3D
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Hyper3D.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -368,6 +423,11 @@ namespace Hyper3D
                         __attempt < __maxAttempts &&
                         global::Hyper3D.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::Hyper3D.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::Hyper3D.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Hyper3D.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -384,14 +444,15 @@ namespace Hyper3D
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Hyper3D.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -431,6 +492,8 @@ namespace Hyper3D
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -451,6 +514,8 @@ namespace Hyper3D
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
 
@@ -475,9 +540,13 @@ namespace Hyper3D
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return
-                                        global::Hyper3D.TaskSubmissionResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Hyper3D.TaskSubmissionResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Hyper3D.AutoSDKHttpResponse<global::Hyper3D.TaskSubmissionResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Hyper3D.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -505,9 +574,13 @@ namespace Hyper3D
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return
-                                        await global::Hyper3D.TaskSubmissionResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Hyper3D.TaskSubmissionResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Hyper3D.AutoSDKHttpResponse<global::Hyper3D.TaskSubmissionResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Hyper3D.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
