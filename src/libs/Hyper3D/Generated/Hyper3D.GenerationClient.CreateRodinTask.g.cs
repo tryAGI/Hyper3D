@@ -273,7 +273,7 @@ namespace Hyper3D
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.BboxCondition, x => global::System.Convert.ToString(x, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty))}]"),
+                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.BboxCondition!, x => global::System.Convert.ToString(x, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty))}]"),
                                     name: "\"bbox_condition\"");
 
                             }
@@ -305,7 +305,7 @@ namespace Hyper3D
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.Addons, x => x))}]"),
+                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.Addons!, x => x))}]"),
                                     name: "\"addons\"");
 
                             }
