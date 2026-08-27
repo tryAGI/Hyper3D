@@ -4,16 +4,16 @@
 namespace Hyper3D
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum TextureOnlyRequestMaterial
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pbr,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Shaded,
     }

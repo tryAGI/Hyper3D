@@ -4,16 +4,16 @@
 namespace Hyper3D
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum RodinGenerationRequestConditionMode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Concat,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Fuse,
     }

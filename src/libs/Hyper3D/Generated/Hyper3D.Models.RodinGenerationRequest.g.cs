@@ -4,7 +4,7 @@
 namespace Hyper3D
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class RodinGenerationRequest
     {
@@ -27,102 +27,102 @@ namespace Hyper3D
         public string? Imagesname { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("prompt")]
         public string? Prompt { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("use_original_alpha")]
         public bool? UseOriginalAlpha { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("condition_mode")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hyper3D.JsonConverters.RodinGenerationRequestConditionModeJsonConverter))]
         public global::Hyper3D.RodinGenerationRequestConditionMode? ConditionMode { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("seed")]
         public int? Seed { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("geometry_file_format")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hyper3D.JsonConverters.GeometryFileFormatJsonConverter))]
         public global::Hyper3D.GeometryFileFormat? GeometryFileFormat { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("material")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hyper3D.JsonConverters.RodinGenerationRequestMaterialJsonConverter))]
         public global::Hyper3D.RodinGenerationRequestMaterial? Material { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("quality")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hyper3D.JsonConverters.RodinGenerationRequestQualityJsonConverter))]
         public global::Hyper3D.RodinGenerationRequestQuality? Quality { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("quality_override")]
         public int? QualityOverride { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("TAPose")]
         public bool? TAPose { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("bbox_condition")]
         public global::System.Collections.Generic.IList<int>? BboxCondition { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mesh_mode")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hyper3D.JsonConverters.RodinGenerationRequestMeshModeJsonConverter))]
         public global::Hyper3D.RodinGenerationRequestMeshMode? MeshMode { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mesh_simplify")]
         public bool? MeshSimplify { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mesh_smooth")]
         public bool? MeshSmooth { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("addons")]
         public global::System.Collections.Generic.IList<string>? Addons { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("preview_render")]
         public bool? PreviewRender { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("hd_texture")]
         public bool? HdTexture { get; set; }

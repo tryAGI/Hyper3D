@@ -4,24 +4,24 @@
 namespace Hyper3D
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum RodinGenerationRequestMaterial
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         All,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         None,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pbr,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Shaded,
     }

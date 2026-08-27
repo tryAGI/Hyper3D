@@ -5,12 +5,12 @@
 namespace Hyper3D
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct StatusResponse : global::System.IEquatable<StatusResponse>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hyper3D.CommonError? CommonError { get; init; }
@@ -19,7 +19,7 @@ namespace Hyper3D
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CommonError))]
@@ -27,7 +27,7 @@ namespace Hyper3D
         public bool IsCommonError => CommonError != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCommonError(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Hyper3D.CommonError PickCommonError() => IsCommonError
             ? CommonError!
             : throw new global::System.InvalidOperationException($"Expected union variant 'CommonError' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hyper3D.StatusResponseVariant2? StatusResponseVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace Hyper3D
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(StatusResponseVariant2))]
@@ -64,7 +64,7 @@ namespace Hyper3D
         public bool IsStatusResponseVariant2 => StatusResponseVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickStatusResponseVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Hyper3D.StatusResponseVariant2 PickStatusResponseVariant2() => IsStatusResponseVariant2
             ? StatusResponseVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'StatusResponseVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator StatusResponse(global::Hyper3D.CommonError value) => new StatusResponse((global::Hyper3D.CommonError?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Hyper3D.CommonError?(StatusResponse @this) => @this.CommonError;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public StatusResponse(global::Hyper3D.CommonError? value)
         {
@@ -101,22 +101,22 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static StatusResponse FromCommonError(global::Hyper3D.CommonError? value) => new StatusResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator StatusResponse(global::Hyper3D.StatusResponseVariant2 value) => new StatusResponse((global::Hyper3D.StatusResponseVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Hyper3D.StatusResponseVariant2?(StatusResponse @this) => @this.StatusResponseVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public StatusResponse(global::Hyper3D.StatusResponseVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static StatusResponse FromStatusResponseVariant2(global::Hyper3D.StatusResponseVariant2? value) => new StatusResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public StatusResponse(
             global::Hyper3D.CommonError? commonError,
@@ -141,23 +141,23 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             StatusResponseVariant2 as object ??
-            CommonError as object 
+            CommonError as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             CommonError?.ToString() ??
-            StatusResponseVariant2?.ToString() 
+            StatusResponseVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Hyper3D.CommonError, TResult>? commonError = null,
@@ -190,7 +190,7 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Hyper3D.CommonError>? commonError = null,
@@ -214,7 +214,7 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Hyper3D.CommonError>? commonError = null,
@@ -237,7 +237,7 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(StatusResponse other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Hyper3D.CommonError?>.Default.Equals(CommonError, other.CommonError) &&
-                global::System.Collections.Generic.EqualityComparer<global::Hyper3D.StatusResponseVariant2?>.Default.Equals(StatusResponseVariant2, other.StatusResponseVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::Hyper3D.StatusResponseVariant2?>.Default.Equals(StatusResponseVariant2, other.StatusResponseVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(StatusResponse obj1, StatusResponse obj2)
         {
@@ -277,7 +277,7 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(StatusResponse obj1, StatusResponse obj2)
         {
@@ -285,7 +285,7 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

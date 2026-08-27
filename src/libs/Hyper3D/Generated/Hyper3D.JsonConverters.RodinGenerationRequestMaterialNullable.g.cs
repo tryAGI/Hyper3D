@@ -20,7 +20,7 @@ namespace Hyper3D.JsonConverters
                     {
                         return global::Hyper3D.RodinGenerationRequestMaterialExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:
