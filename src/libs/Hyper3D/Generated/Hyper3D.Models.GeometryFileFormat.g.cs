@@ -4,28 +4,28 @@
 namespace Hyper3D
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum GeometryFileFormat
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Fbx,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Glb,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Obj,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Stl,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Usdz,
     }

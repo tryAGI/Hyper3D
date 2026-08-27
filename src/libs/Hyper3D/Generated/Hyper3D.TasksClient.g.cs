@@ -10,7 +10,7 @@ namespace Hyper3D
     public sealed partial class TasksClient : global::Hyper3D.ITasksClient, global::System.IDisposable
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public const string DefaultBaseUrl = "https://api.hyper3d.com/";
 
@@ -37,7 +37,7 @@ namespace Hyper3D
         internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Hyper3D.SourceGenerationContext.Default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext
         {

@@ -4,12 +4,12 @@
 namespace Hyper3D
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class BalanceResponse
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("balance")]
         public int? Balance { get; set; }

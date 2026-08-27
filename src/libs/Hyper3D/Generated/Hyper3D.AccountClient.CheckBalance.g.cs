@@ -124,7 +124,7 @@ namespace Hyper3D
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
                 global::Hyper3D.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,

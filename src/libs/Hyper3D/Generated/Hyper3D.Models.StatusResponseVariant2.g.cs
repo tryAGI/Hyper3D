@@ -4,12 +4,12 @@
 namespace Hyper3D
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class StatusResponseVariant2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("jobs")]
         public global::System.Collections.Generic.IList<global::Hyper3D.StatusResponseVariant2Job>? Jobs { get; set; }

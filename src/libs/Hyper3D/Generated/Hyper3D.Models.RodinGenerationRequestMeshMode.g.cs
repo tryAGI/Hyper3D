@@ -4,16 +4,16 @@
 namespace Hyper3D
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum RodinGenerationRequestMeshMode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Quad,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Raw,
     }

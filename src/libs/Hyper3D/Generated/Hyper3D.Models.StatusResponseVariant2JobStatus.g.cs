@@ -4,24 +4,24 @@
 namespace Hyper3D
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum StatusResponseVariant2JobStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Done,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Failed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Generating,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Waiting,
     }

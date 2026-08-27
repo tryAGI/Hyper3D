@@ -4,12 +4,12 @@
 namespace Hyper3D
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class DownloadRequest
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("task_uuid")]
         [global::System.Text.Json.Serialization.JsonRequired]

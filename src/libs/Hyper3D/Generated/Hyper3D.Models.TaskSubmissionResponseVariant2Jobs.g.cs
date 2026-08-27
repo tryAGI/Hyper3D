@@ -4,18 +4,18 @@
 namespace Hyper3D
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class TaskSubmissionResponseVariant2Jobs
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uuids")]
         public global::System.Collections.Generic.IList<string>? Uuids { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("subscription_key")]
         public string? SubscriptionKey { get; set; }

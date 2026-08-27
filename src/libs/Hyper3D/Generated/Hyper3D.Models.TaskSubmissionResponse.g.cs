@@ -5,12 +5,12 @@
 namespace Hyper3D
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct TaskSubmissionResponse : global::System.IEquatable<TaskSubmissionResponse>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hyper3D.CommonError? CommonError { get; init; }
@@ -19,7 +19,7 @@ namespace Hyper3D
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CommonError))]
@@ -27,7 +27,7 @@ namespace Hyper3D
         public bool IsCommonError => CommonError != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCommonError(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Hyper3D.CommonError PickCommonError() => IsCommonError
             ? CommonError!
             : throw new global::System.InvalidOperationException($"Expected union variant 'CommonError' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hyper3D.TaskSubmissionResponseVariant2? TaskSubmissionResponseVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace Hyper3D
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TaskSubmissionResponseVariant2))]
@@ -64,7 +64,7 @@ namespace Hyper3D
         public bool IsTaskSubmissionResponseVariant2 => TaskSubmissionResponseVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTaskSubmissionResponseVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Hyper3D.TaskSubmissionResponseVariant2 PickTaskSubmissionResponseVariant2() => IsTaskSubmissionResponseVariant2
             ? TaskSubmissionResponseVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'TaskSubmissionResponseVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TaskSubmissionResponse(global::Hyper3D.CommonError value) => new TaskSubmissionResponse((global::Hyper3D.CommonError?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Hyper3D.CommonError?(TaskSubmissionResponse @this) => @this.CommonError;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TaskSubmissionResponse(global::Hyper3D.CommonError? value)
         {
@@ -101,22 +101,22 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TaskSubmissionResponse FromCommonError(global::Hyper3D.CommonError? value) => new TaskSubmissionResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TaskSubmissionResponse(global::Hyper3D.TaskSubmissionResponseVariant2 value) => new TaskSubmissionResponse((global::Hyper3D.TaskSubmissionResponseVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Hyper3D.TaskSubmissionResponseVariant2?(TaskSubmissionResponse @this) => @this.TaskSubmissionResponseVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TaskSubmissionResponse(global::Hyper3D.TaskSubmissionResponseVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TaskSubmissionResponse FromTaskSubmissionResponseVariant2(global::Hyper3D.TaskSubmissionResponseVariant2? value) => new TaskSubmissionResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TaskSubmissionResponse(
             global::Hyper3D.CommonError? commonError,
@@ -141,23 +141,23 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             TaskSubmissionResponseVariant2 as object ??
-            CommonError as object 
+            CommonError as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             CommonError?.ToString() ??
-            TaskSubmissionResponseVariant2?.ToString() 
+            TaskSubmissionResponseVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Hyper3D.CommonError, TResult>? commonError = null,
@@ -190,7 +190,7 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Hyper3D.CommonError>? commonError = null,
@@ -214,7 +214,7 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Hyper3D.CommonError>? commonError = null,
@@ -237,7 +237,7 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(TaskSubmissionResponse other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Hyper3D.CommonError?>.Default.Equals(CommonError, other.CommonError) &&
-                global::System.Collections.Generic.EqualityComparer<global::Hyper3D.TaskSubmissionResponseVariant2?>.Default.Equals(TaskSubmissionResponseVariant2, other.TaskSubmissionResponseVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::Hyper3D.TaskSubmissionResponseVariant2?>.Default.Equals(TaskSubmissionResponseVariant2, other.TaskSubmissionResponseVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(TaskSubmissionResponse obj1, TaskSubmissionResponse obj2)
         {
@@ -277,7 +277,7 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(TaskSubmissionResponse obj1, TaskSubmissionResponse obj2)
         {
@@ -285,7 +285,7 @@ namespace Hyper3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {
