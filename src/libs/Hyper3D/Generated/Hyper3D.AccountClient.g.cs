@@ -34,7 +34,7 @@ namespace Hyper3D
         /// <inheritdoc/>
         public global::Hyper3D.AutoSDKClientOptions Options { get; }
 
-        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Hyper3D.SourceGenerationContext.Default);
+        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Hyper3D.AccountSourceGenerationContext.Default);
 
         /// <summary>
         ///
