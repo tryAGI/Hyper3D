@@ -42,8 +42,8 @@ namespace Hyper3D
         /// <summary>
         ///
         /// </summary>
-        public global::Hyper3D.CommonError PickCommonError() => IsCommonError
-            ? CommonError!
+        public global::Hyper3D.CommonError PickCommonError() => CommonError is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CommonError' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Hyper3D
         /// <summary>
         ///
         /// </summary>
-        public global::Hyper3D.DownloadResponseVariant2 PickDownloadResponseVariant2() => IsDownloadResponseVariant2
-            ? DownloadResponseVariant2!
+        public global::Hyper3D.DownloadResponseVariant2 PickDownloadResponseVariant2() => DownloadResponseVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'DownloadResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Hyper3D
                 Validate();
             }
 
-            if (IsCommonError && commonError != null)
+            if (CommonError is { } __value0 && commonError != null)
             {
-                return commonError(CommonError!);
+                return commonError(__value0);
             }
-            else if (IsDownloadResponseVariant2 && downloadResponseVariant2 != null)
+            else if (DownloadResponseVariant2 is { } __value1 && downloadResponseVariant2 != null)
             {
-                return downloadResponseVariant2(DownloadResponseVariant2!);
+                return downloadResponseVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Hyper3D
                 Validate();
             }
 
-            if (IsCommonError)
+            if (CommonError is { } __value0)
             {
-                commonError?.Invoke(CommonError!);
+                commonError?.Invoke(__value0);
             }
-            else if (IsDownloadResponseVariant2)
+            else if (DownloadResponseVariant2 is { } __value1)
             {
-                downloadResponseVariant2?.Invoke(DownloadResponseVariant2!);
+                downloadResponseVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Hyper3D
                 Validate();
             }
 
-            if (IsCommonError)
+            if (CommonError is { } __value0)
             {
-                commonError?.Invoke(CommonError!);
+                commonError?.Invoke(__value0);
             }
-            else if (IsDownloadResponseVariant2)
+            else if (DownloadResponseVariant2 is { } __value1)
             {
-                downloadResponseVariant2?.Invoke(DownloadResponseVariant2!);
+                downloadResponseVariant2?.Invoke(__value1);
             }
         }
 
