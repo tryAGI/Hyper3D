@@ -42,8 +42,8 @@ namespace Hyper3D
         /// <summary>
         ///
         /// </summary>
-        public global::Hyper3D.CommonError PickCommonError() => IsCommonError
-            ? CommonError!
+        public global::Hyper3D.CommonError PickCommonError() => CommonError is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CommonError' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Hyper3D
         /// <summary>
         ///
         /// </summary>
-        public global::Hyper3D.TaskSubmissionResponseVariant2 PickTaskSubmissionResponseVariant2() => IsTaskSubmissionResponseVariant2
-            ? TaskSubmissionResponseVariant2!
+        public global::Hyper3D.TaskSubmissionResponseVariant2 PickTaskSubmissionResponseVariant2() => TaskSubmissionResponseVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TaskSubmissionResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Hyper3D
                 Validate();
             }
 
-            if (IsCommonError && commonError != null)
+            if (CommonError is { } __value0 && commonError != null)
             {
-                return commonError(CommonError!);
+                return commonError(__value0);
             }
-            else if (IsTaskSubmissionResponseVariant2 && taskSubmissionResponseVariant2 != null)
+            else if (TaskSubmissionResponseVariant2 is { } __value1 && taskSubmissionResponseVariant2 != null)
             {
-                return taskSubmissionResponseVariant2(TaskSubmissionResponseVariant2!);
+                return taskSubmissionResponseVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Hyper3D
                 Validate();
             }
 
-            if (IsCommonError)
+            if (CommonError is { } __value0)
             {
-                commonError?.Invoke(CommonError!);
+                commonError?.Invoke(__value0);
             }
-            else if (IsTaskSubmissionResponseVariant2)
+            else if (TaskSubmissionResponseVariant2 is { } __value1)
             {
-                taskSubmissionResponseVariant2?.Invoke(TaskSubmissionResponseVariant2!);
+                taskSubmissionResponseVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Hyper3D
                 Validate();
             }
 
-            if (IsCommonError)
+            if (CommonError is { } __value0)
             {
-                commonError?.Invoke(CommonError!);
+                commonError?.Invoke(__value0);
             }
-            else if (IsTaskSubmissionResponseVariant2)
+            else if (TaskSubmissionResponseVariant2 is { } __value1)
             {
-                taskSubmissionResponseVariant2?.Invoke(TaskSubmissionResponseVariant2!);
+                taskSubmissionResponseVariant2?.Invoke(__value1);
             }
         }
 
